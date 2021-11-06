@@ -1,0 +1,9 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+html, body { height: 100%;
+    overflow-y: auto !important;
+     }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

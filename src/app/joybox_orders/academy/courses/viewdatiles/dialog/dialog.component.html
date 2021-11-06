@@ -1,0 +1,44 @@
+<mat-dialog-content class="mat-typography">   
+     
+<mat-card class="example-card">
+  <mat-card-title-group class="group">
+    <mat-card-title class="title">Title:{{dataSources?.title}}</mat-card-title>
+    <mat-card-title class="title">Subject:{{dataSources?.subject}}</mat-card-title>
+    <mat-card-subtitle class="subtitle">Created:{{dataSources?.created_at}}</mat-card-subtitle>
+    <mat-card-subtitle class="subtitle">Updated:{{dataSources?.updated_at}}</mat-card-subtitle>
+    <div class="media" *ngFor="let item of dataSources.medias">
+      <h3 class="id">IdMedia:{{item.id}}</h3>
+      <h3 class="flutter">TaskId:{{item.flutter_task_id}}</h3>
+      <h3 class="type">Type:{{item.type}}</h3>
+      <div class="ph" *ngIf='item.type=="photo"'>
+        <img src="{{item.media}}" alt="img" >
+      </div>
+      <div  class="video" *ngIf="item.type=='video'">
+        <video controls>
+          <source src="item.media" type="video/mp4">
+          <source src="item.media" type="video/ogg">
+        </video>
+      </div>  
+      <div class="file" *ngIf='item.type=="file"'>       
+        <ngx-extended-pdf-viewer
+          [src]="item.media"
+          [height]="'35%'"
+          [useBrowserLocale]="true"
+          [textLayer]="true"
+          [showHandToolButton]="true"
+          width="35%"
+        >
+        </ngx-extended-pdf-viewer>
+      
+      </div>
+
+    </div>
+  </mat-card-title-group>
+</mat-card>
+     
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+

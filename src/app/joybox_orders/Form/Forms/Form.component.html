@@ -1,0 +1,93 @@
+<div id="Form" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="Form-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <span class="example"><span class="ex">J</span><span class="exa">O</span><span class="exam">Y</span>BOX</span>
+        </div>
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            Welcome to the <span class="example"><span class="ex">J</span><span class="exa">O</span><span class="exam">Y</span>BOX</span>
+            !
+        </div>
+
+        <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+            pleas add the title and subject and uploade the video or photo or dec...
+        </div>
+
+    </div>
+
+    <div id="Form-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="Form-form">
+
+            <div class="logo" fxHide.gt-xs>
+               <span class="example"> <span class="ex">J</span><span class="exa">O</span><span class="exam">Y</span>BOX</span>
+            </div>
+
+            <div class="title">ADD Data</div>
+
+            <form   enctype="multipart/form-data" novalidate #postdata="ngForm">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput ngModel name="title">
+                    <mat-icon matSuffix class="secondary-text">title</mat-icon>
+                    <mat-error>
+                        Title is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <input matInput ngModel name="subject">
+                    <mat-icon matSuffix class="secondary-text">subject</mat-icon>
+                </mat-form-field>
+
+                <div class="profile-box add-post">
+
+                    <div class="form" fxFlex>
+                
+                        <footer fxLayout="row" fxLayoutAlign="space-between center">
+        
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                
+
+                                <input type="file" accept="image/png, image/gif, image/jpeg"  style="display: none;" #photouplode ngModel name="photo" (change)="UPloadePhoto($event)"  > 
+        
+                                <button mat-icon-button aria-label="Add photo" (click)="photouplode.click()">
+                                    <mat-icon>photo</mat-icon>
+                                   
+                                </button>
+                             
+                                <input type="file"  accept=".mp4" style="display: none;" #videouplode ngModel  name="video" (change)="UPloadeVideo($event)"  > 
+
+                                <button mat-icon-button aria-label="Add video" (click)="videouplode.click()">
+                                    <mat-icon>videocam</mat-icon>
+                                </button>
+                       
+                                <input type="file" accept=".pdf, .rar, .zip" style="display: none;" #fileuplode ngModel name="doc" (change)="UPloadeDoc($event)" >  
+                                <button mat-icon-button aria-label="Add file"  (click)="fileuplode.click()">
+                                    <mat-icon>attach_file</mat-icon>
+                                </button>
+                                
+                            </div>
+        
+        
+                        </footer>
+        
+                    </div>
+                        
+                </div>
+          
+                <button mat-raised-button color="accent" class="submit-button" aria-label="ADD DATA"
+                type="submit" (click)="OnSubmit(postdata.value) ">
+            ADD DATA
+        </button>
+             
+
+            </form>
+          
+    </div>
+</div>

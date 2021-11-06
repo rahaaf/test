@@ -1,0 +1,96 @@
+<div id="academy-courses" class="page-layout simple">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text">
+            <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                WELCOME TO<span class="example"> <span class="ex">J</span><span class="exa">O</span><span class="exam">Y</span>BOX!</span>
+
+            </h1>
+            <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+               Our members added!
+            </h3>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="column" fxLayoutAlign="center">
+
+            <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+                <mat-form-field appearance="outline" floatLabel="always" class="course-search">
+                    <mat-label>Search for a members</mat-label>
+                    <input matInput placeholder="Enter a keyword...">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="category-selector">
+                    <mat-label>Category</mat-label>
+                    <mat-select>
+                        <mat-option [value]="'all'">
+                            All
+                        </mat-option>
+                        <mat-option>
+                            id
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div> 
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                <div class="course" fxFlex="100" fxFlex.gt-xs="50" *ngFor="let course of courses" 
+                     fxFlex.gt-sm="33"  [@animate]="{value:'*',params:{y:'100%'}}">
+
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+
+                        <div class="header" fxLayout="row" fxLayoutAlign="center center">
+
+                       <div class="category" fxFlex>
+                           {{course.title}}
+                       </div>
+
+                       
+
+                   </div>
+
+                   <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                       <div class="h1">{{course.subject}}</div>
+                       <div class="updated">{{course.created_at}}</div>
+                   </div>
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center center" (click)="OncoursId(course.id)">
+                            
+                            <ng-container >
+                                <app-viewdet></app-viewdet>
+                            </ng-container>
+                           
+                             
+                           
+                       </div>
+
+                    </div>
+
+                </div>
+
+              
+
+            </div>
+            <mat-paginator [length]="100"
+              [pageSize]="3"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              >
+            </mat-paginator>
+
+        </div>
+        
+    </div>
+    <!-- / CONTENT -->
+
+</div>
